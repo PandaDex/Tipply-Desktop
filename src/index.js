@@ -9,13 +9,13 @@ const nativeTheme = electron.nativeTheme;
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
-    width: 1600,
+    width: 1620,
     height: 900,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
   });
-  mainWindow.loadURL('https://tipply.pl');
+  mainWindow.loadURL('https://app.tipply.pl');
   mainWindow.setMenu(null);
   mainWindow.setIcon(path.join(__dirname, 'icon.png'));
   nativeTheme.themeSource = 'system';
