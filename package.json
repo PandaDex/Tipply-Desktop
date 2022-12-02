@@ -15,6 +15,7 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
+    "make-l": "electron-forge make --deb",
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\""
   },
@@ -38,7 +39,9 @@
         },
         {
           "name": "@electron-forge/maker-deb",
-          "config": {}
+          "config": {
+            "setupIcon": "./src/icon.ico"
+          }
         },
         {
           "name": "@electron-forge/maker-rpm",
