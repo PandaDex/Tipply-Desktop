@@ -1,7 +1,7 @@
 {
   "name": "tipply-desktop",
   "productName": "Tipply Desktop",
-  "appId": "com.dex.tipply",
+  "appId": "pl.dex.tipply",
   "version": "1.0.4",
   "description": "Nieoficjalna aplikacja tipply",
   "private": "true",

@@ -30,7 +30,7 @@ superagent.get('https://api.github.com/repos/PandaDex/Tipply-Desktop/releases/la
   const notif={
         title: 'Tipply',
         body: `Dostepna jest nowa aktualizacja: ${latest}`,
-        icon: iconAddress
+        icon: iconAddress 
       };
   noti = new Notification(notif)
   noti.show()
