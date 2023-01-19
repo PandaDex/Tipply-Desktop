@@ -19,7 +19,7 @@ const createWindow = () => {
   mainWindow.setMenu(null);
   mainWindow.setIcon(path.join(__dirname, 'icon.png'));
   nativeTheme.themeSource = 'system';
-  mainWindow.setBackgroundColor('#000')
+  mainWindow.setBackgroundColor('#18191a')
 
 };
 
