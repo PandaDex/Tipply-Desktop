@@ -1,4 +1,4 @@
 ﻿# Nieoficjalna aplikacja tipply
 
-![Tipply_Desktop_zBo2plzB2d](https://user-images.githubusercontent.com/78349074/205772252-9cef4265-19e1-460f-8bf1-b4c4670f6ae3.png)
-![Tipply_Desktop_HBvqPM6ISQ](https://user-images.githubusercontent.com/78349074/205772260-6604caa0-f385-41f2-83d4-88b70572f7cf.png)
+![Tipply Desktop Login](https://user-images.githubusercontent.com/78349074/213435183-44cb8aa4-fb95-4ac6-9cd6-d083d52d1c4c.png)
+![Tipply Desktop Home](https://user-images.githubusercontent.com/78349074/213435097-0b6c37f5-0c69-4929-b29e-cf42e8ea893d.png)
