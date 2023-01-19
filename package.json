@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
-    "shell": "^0.5.1",
+    "shell": "^0.9.4",
     "superagent": "^8.0.8"
   },
   "devDependencies": {
