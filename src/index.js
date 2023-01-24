@@ -1,14 +1,15 @@
 const { app, BrowserWindow, Notification } = require('electron');
+const electron = require('electron');
+const nativeTheme = electron.nativeTheme;
 const superagent = require('superagent');
+const path = require('path');
 app.setAppUserModelId("Tipply Desktop")
 
 
-const path = require('path');
 if (require('electron-squirrel-startup')) {
   app.quit();
 }
-const electron = require('electron');
-const nativeTheme = electron.nativeTheme;
+
 
 
 const createWindow = () => {
@@ -20,20 +21,24 @@ const createWindow = () => {
     },
   });
 
-superagent.get('https://api.github.com/repos/PandaDex/Tipply-Desktop/releases/latest').set('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13').set('Content-Type', 'application/json').end((err, res) => {
+superagent.get('https://api.github.com/repos/PandaDex/Tipply-Desktop/releases/latest')
+.set('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13')
+.set('Content-Type', 'application/json')
+.end((err, res) => {
   const latest = res.body.name;
   const local = require('../package.json').version;
+  const updateico = path.join(__dirname, 'update.png')
+  const appico = path.join(__dirname, 'icon.ico');
   
  if(latest > local) {
-  const updateico = path.join(__dirname, 'update.ico')
-  let iconAddress = path.join(__dirname, 'icon.png');
   const notif={
         title: 'Tipply',
-        body: `Dostepna jest nowa aktualizacja: ${latest}`,
-        icon: iconAddress 
+        body: `Dostepna jest aktualizacja: ${latest}`,
+        icon: appico 
       };
   noti = new Notification(notif)
   noti.show()
+
   noti.on('click', ()=>{
     electron.shell.openExternal("https://github.com/PandaDex/Tipply-Desktop/releases/tag/Latest");
   })
