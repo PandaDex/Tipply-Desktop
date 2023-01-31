@@ -5,12 +5,9 @@ const superagent = require('superagent');
 const path = require('path');
 app.setAppUserModelId("Tipply Desktop")
 
-
 if (require('electron-squirrel-startup')) {
   app.quit();
 }
-
-
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
@@ -21,30 +18,34 @@ const createWindow = () => {
     },
   });
 
-superagent.get('https://api.github.com/repos/PandaDex/Tipply-Desktop/releases/latest')
-.set('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13')
-.set('Content-Type', 'application/json')
-.end((err, res) => {
-  const latest = res.body.name;
-  const local = require('../package.json').version;
-  const updateico = path.join(__dirname, 'update.png')
-  const appico = path.join(__dirname, 'icon.ico');
-  
- if(latest > local) {
-  const notif={
-        title: 'Tipply',
-        body: `Dostepna jest aktualizacja: ${latest}`,
-        icon: appico 
-      };
-  noti = new Notification(notif)
-  noti.show()
+  superagent.get('https://api.github.com/repos/PandaDex/Tipply-Desktop/releases/latest')
+    .set('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13')
+    .set('Content-Type', 'application/json')
+    .end((err, res) => {
+      if (err) return;
+      const latest = res.body.name;
+      const local = require('../package.json').version;
+      const updateico = path.join(__dirname, 'update.png')
+      const appico = path.join(__dirname, 'icon.ico');
 
-  noti.on('click', ()=>{
-    electron.shell.openExternal("https://github.com/PandaDex/Tipply-Desktop/releases/tag/Latest");
-  })
-  mainWindow.setOverlayIcon(updateico, 'Dostepna jest aktualizacja!')
- }
-})
+      if (latest > local) {
+        console.timeLog('Update available')
+        const updatenoti = {
+          title: 'Tipply',
+          body: `Dostepna jest aktualizacja: ${latest}`,
+          icon: appico
+        };
+        noti = new Notification(updatenoti)
+        noti.show()
+        mainWindow.setOverlayIcon(updateico, 'Dostepna jest aktualizacja!')
+
+
+        noti.on('click', () => {
+          electron.shell.openExternal("https://github.com/PandaDex/Tipply-Desktop/releases/tag/Latest");
+          console.timeLog('Noti clicked');
+        })
+      }
+    })
 
   mainWindow.loadURL('https://app.tipply.pl');
   mainWindow.setMenu(null);
