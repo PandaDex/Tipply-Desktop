@@ -14,6 +14,7 @@ const createWindow = () => {
     width: 1620,
     height: 900,
     webPreferences: {
+      devTools: true,
       preload: path.join(__dirname, 'preload.js'),
     },
   });
@@ -29,7 +30,7 @@ const createWindow = () => {
       const appico = path.join(__dirname, 'icon.ico');
 
       if (latest > local) {
-        console.timeLog('Update available')
+        console.log('Update available')
         const updatenoti = {
           title: 'Tipply',
           body: `Dostepna jest aktualizacja: ${latest}`,
@@ -42,11 +43,10 @@ const createWindow = () => {
 
         noti.on('click', () => {
           electron.shell.openExternal("https://github.com/PandaDex/Tipply-Desktop/releases/tag/Latest");
-          console.timeLog('Noti clicked');
+          console.log('Noti clicked');
         })
       }
     })
-
   mainWindow.loadURL('https://app.tipply.pl');
   mainWindow.setMenu(null);
   mainWindow.setIcon(path.join(__dirname, 'icon.png'));
